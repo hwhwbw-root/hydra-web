@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/*
+  hydra-web theme
+  Deep desaturated plum/violet accent over a warm-neutral zinc base.
+  Dark plum sidebar, light content. No neon glows — tinted shadows only.
+*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-softer: var(--primary-softer);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-online: var(--online);
+  --color-idle: var(--idle);
+  --color-offline: var(--offline);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+:root {
+  --background: #fafaf9;
+  --foreground: #1c1a22;
+  --card: #ffffff;
+  --card-foreground: #1c1a22;
+  --muted: #f4f3f6;
+  --muted-foreground: #76727f;
+  --border: #e8e6ec;
+  --input: #e3e0e9;
+  --ring: #6e56cf;
+
+  /* deep plum violet, desaturated < 80% */
+  --primary: #6e56cf;
+  --primary-foreground: #ffffff;
+  --primary-soft: #efebfb;
+  --primary-softer: #f6f4fc;
+
+  /* dark plum sidebar — not pure black */
+  --sidebar: #18141f;
+  --sidebar-foreground: #cbc7d6;
+  --sidebar-muted: #8d889c;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-accent: rgba(124, 100, 222, 0.18);
+  --sidebar-accent-foreground: #d4c9f7;
+
+  --online: #16a37a;
+  --idle: #d99318;
+  --offline: #a09bac;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* tabular numbers everywhere data lives */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* tinted diffusion shadow used by elevated surfaces */
+.shadow-diffuse {
+  box-shadow: 0 1px 2px rgba(28, 26, 34, 0.04),
+    0 12px 32px -16px rgba(70, 54, 130, 0.18);
+}
+
+.shadow-diffuse-lg {
+  box-shadow: 0 1px 2px rgba(28, 26, 34, 0.05),
+    0 24px 56px -24px rgba(70, 54, 130, 0.28);
+}
+
+/* frosted edge for glass surfaces */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* status dot breathing ring */
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 currentColor;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 4px transparent;
+    opacity: 0.85;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* cascade direct children in on mount (premium staggered reveal) */
+.stagger-children > * {
+  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 30ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 75ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 165ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 210ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 255ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 345ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 390ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 435ms; }
+.stagger-children > *:nth-child(n + 11) { animation-delay: 480ms; }
+
+/* slow perpetual drift for ambient gradient meshes (transform only) */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5%, -2%, 0) scale(1.06);
+  }
+}
+.animate-drift {
+  animation: drift 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--muted);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+/* refined scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+  border: 2px solid var(--background);
+}
+
+/* Leaflet surface tuning to match the theme */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #e9e7ef;
+}
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+.leaflet-bar a {
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
