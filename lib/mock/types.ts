@@ -39,13 +39,7 @@ export interface Worker {
   trail: TrailPoint[];
 }
 
-export type ActivityKind =
-  | "report"
-  | "check-in"
-  | "geofence"
-  | "offline"
-  | "online"
-  | "battery";
+export type ActivityKind = "report" | "check-in" | "geofence" | "offline";
 
 export interface ActivityEvent {
   id: string;

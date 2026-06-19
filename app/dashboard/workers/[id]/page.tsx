@@ -8,8 +8,6 @@ import {
   ChatCircleDots,
   FileText,
   NavigationArrow,
-  BatteryMedium,
-  CellSignalMedium,
   Hash,
 } from "@phosphor-icons/react/dist/ssr";
 import { getWorker } from "@/lib/mock/workers";
@@ -18,7 +16,6 @@ import { ACTIVITY } from "@/lib/mock/activity";
 import { MapPanel } from "@/components/map-panel";
 import { Avatar } from "@/components/avatar";
 import { StatusDot } from "@/components/status-dot";
-import { Battery, Signal } from "@/components/phone-health";
 import { TeamBadge } from "@/components/team-badge";
 import { Panel, PanelHeader } from "@/components/section";
 import { formatMins } from "@/lib/utils";
@@ -99,15 +96,6 @@ export default async function WorkerDetailPage({
             </Row>
             <Row icon={<Hash size={16} />} label="Number">
               <span className="tnum">{worker.phoneNumber}</span>
-            </Row>
-            <Row icon={<BatteryMedium size={16} />} label="Battery">
-              <Battery percent={worker.battery} />
-            </Row>
-            <Row icon={<CellSignalMedium size={16} />} label="Signal">
-              <span className="inline-flex items-center gap-1.5">
-                <Signal bars={worker.signal} />
-                <span className="text-foreground/80">{worker.signal}/4</span>
-              </span>
             </Row>
             <Row icon={<Crosshair size={16} />} label="Coordinates">
               <span className="tnum text-foreground/80">

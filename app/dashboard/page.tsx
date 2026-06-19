@@ -3,7 +3,7 @@ import {
   Broadcast,
   UsersThree,
   FileDashed,
-  BatteryMedium,
+  WifiSlash,
   ArrowRight,
   ClipboardText,
   CircleNotch,
@@ -68,11 +68,11 @@ export default async function OverviewPage({
           index={2}
         />
         <KpiCard
-          label="Avg phone battery"
-          value={`${kpis.avgBattery}%`}
-          hint="fleet"
-          icon={BatteryMedium}
-          accent="#16a37a"
+          label="Offline now"
+          value={kpis.offline}
+          hint="phones dark"
+          icon={WifiSlash}
+          accent="#e05a6b"
           index={3}
         />
       </KpiGrid>

@@ -4,7 +4,6 @@ import type { Worker } from "@/lib/mock/types";
 import { getTeam } from "@/lib/mock/teams";
 import { Avatar } from "@/components/avatar";
 import { StatusDot } from "@/components/status-dot";
-import { Battery } from "@/components/phone-health";
 import { TeamBadge } from "@/components/team-badge";
 import { formatMins } from "@/lib/utils";
 
@@ -38,10 +37,6 @@ export function WorkerRow({
         <p className="tnum mt-0.5 text-xs text-muted-foreground">
           {formatMins(worker.lastSeenMins)}
         </p>
-      </div>
-
-      <div className="hidden w-16 shrink-0 md:block">
-        <Battery percent={worker.battery} />
       </div>
 
       <CaretRight

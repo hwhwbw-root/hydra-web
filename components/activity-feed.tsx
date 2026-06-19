@@ -4,7 +4,6 @@ import {
   MapPin,
   Polygon,
   WifiSlash,
-  BatteryLow,
 } from "@phosphor-icons/react/dist/ssr";
 import type { ActivityEvent, ActivityKind } from "@/lib/mock/types";
 import { getWorker } from "@/lib/mock/workers";
@@ -17,8 +16,6 @@ const KIND_ICON: Record<ActivityKind, React.ElementType> = {
   "check-in": MapPin,
   geofence: Polygon,
   offline: WifiSlash,
-  online: MapPin,
-  battery: BatteryLow,
 };
 
 const KIND_TONE: Record<ActivityKind, string> = {
@@ -26,8 +23,6 @@ const KIND_TONE: Record<ActivityKind, string> = {
   "check-in": "text-online",
   geofence: "text-[#5b6ee0]",
   offline: "text-offline",
-  online: "text-online",
-  battery: "text-idle",
 };
 
 export function ActivityFeed({ events }: { events: ActivityEvent[] }) {

@@ -26,7 +26,6 @@ export interface Kpis {
   offline: number;
   activeTeams: number;
   reportsPending: number;
-  avgBattery: number;
 }
 
 export function computeKpis(): Kpis {
@@ -36,9 +35,6 @@ export function computeKpis(): Kpis {
   const teams = new Set(
     WORKERS.filter((w) => w.status !== "offline").map((w) => w.teamId),
   );
-  const avgBattery = Math.round(
-    WORKERS.reduce((sum, w) => sum + w.battery, 0) / WORKERS.length,
-  );
   return {
     total: WORKERS.length,
     online,
@@ -46,6 +42,5 @@ export function computeKpis(): Kpis {
     offline,
     activeTeams: teams.size,
     reportsPending: computeReportKpis().pending,
-    avgBattery,
   };
 }
