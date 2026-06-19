@@ -19,27 +19,44 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="grid min-h-[100dvh] place-items-center bg-background px-4">
-      <div className="animate-fade-up w-full max-w-sm">
-        {/* site title */}
-        <div className="mb-7 flex items-center justify-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-sidebar">
-            <Logo size={26} />
-          </span>
-          <span className="text-xl font-semibold tracking-tight text-foreground">
-            Hydra
-          </span>
+    <div className="grid min-h-[100dvh] lg:grid-cols-[1.05fr_1fr]">
+      {/* Brand panel — purple gradient + title only, no intro copy */}
+      <div
+        className="relative hidden flex-col justify-between overflow-hidden p-12 lg:flex"
+        style={{
+          background:
+            "radial-gradient(120% 90% at 15% 10%, #2a2140 0%, #18141f 45%, #120f18 100%)",
+        }}
+      >
+        <div
+          className="animate-drift pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(40% 40% at 80% 25%, rgba(124,100,222,0.28), transparent 70%), radial-gradient(35% 35% at 20% 85%, rgba(91,110,224,0.22), transparent 70%)",
+          }}
+        />
+        <div className="relative">
+          <Logo withWordmark size={38} />
         </div>
+      </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-diffuse sm:p-7">
-          <h1 className="text-lg font-semibold tracking-tight text-foreground">
-            Sign in
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Enter your details to open the console.
+      {/* Form panel */}
+      <div className="flex items-center justify-center px-5 py-12 sm:px-10">
+        <div className="animate-fade-up w-full max-w-sm">
+          <div className="mb-8 lg:hidden">
+            <span className="inline-flex rounded-2xl bg-sidebar p-2">
+              <Logo size={32} />
+            </span>
+          </div>
+
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+            Sign in to Hydra
+          </h2>
+          <p className="mt-1.5 text-sm text-muted-foreground">
+            Welcome back. Enter your details to open the console.
           </p>
 
-          <form onSubmit={submit} className="mt-6 flex flex-col gap-4">
+          <form onSubmit={submit} className="mt-8 flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="email"
@@ -92,11 +109,11 @@ export default function SignInPage() {
               )}
             </button>
           </form>
-        </div>
 
-        <p className="mt-5 text-center text-xs text-muted-foreground">
-          Prototype — any email and password will sign you in.
-        </p>
+          <p className="mt-6 text-center text-xs text-muted-foreground">
+            Prototype — any email and password will sign you in.
+          </p>
+        </div>
       </div>
     </div>
   );
