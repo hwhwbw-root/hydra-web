@@ -22,7 +22,7 @@ export default function SignInPage() {
     <div className="grid min-h-[100dvh] lg:grid-cols-[1.05fr_1fr]">
       {/* Brand panel — purple gradient + title only, no intro copy */}
       <div
-        className="relative hidden flex-col justify-between overflow-hidden p-12 lg:flex"
+        className="relative hidden flex-col items-center justify-center overflow-hidden p-12 lg:flex"
         style={{
           background:
             "radial-gradient(120% 90% at 15% 10%, #2a2140 0%, #18141f 45%, #120f18 100%)",
@@ -35,8 +35,16 @@ export default function SignInPage() {
               "radial-gradient(40% 40% at 80% 25%, rgba(124,100,222,0.28), transparent 70%), radial-gradient(35% 35% at 20% 85%, rgba(91,110,224,0.22), transparent 70%)",
           }}
         />
-        <div className="relative">
-          <Logo withWordmark size={38} />
+        <div className="relative flex flex-col items-center gap-5 text-center">
+          <Logo size={64} />
+          <div>
+            <p className="text-3xl font-semibold tracking-tight text-white">
+              Hydra
+            </p>
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-[0.2em] text-sidebar-muted">
+              Console
+            </p>
+          </div>
         </div>
       </div>
 
