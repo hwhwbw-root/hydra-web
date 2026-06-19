@@ -216,7 +216,6 @@ export interface ReportKpis {
   approved: number;
   rejected: number;
   totalManHours: number;
-  avgRepairMins: number;
   damageCounts: Record<DamageType, number>;
   statusCounts: { pending: number; approved: number; rejected: number };
 }
@@ -242,7 +241,6 @@ export function computeReportKpis(): ReportKpis {
     approved,
     rejected,
     totalManHours: Math.round(totalMins / 60),
-    avgRepairMins: Math.round(totalMins / total),
     damageCounts,
     statusCounts: { pending, approved, rejected },
   };

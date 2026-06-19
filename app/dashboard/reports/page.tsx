@@ -3,7 +3,7 @@ import {
   ClipboardText,
   CircleNotch,
   CheckCircle,
-  Clock,
+  XCircle,
   FileMagnifyingGlass,
 } from "@phosphor-icons/react/dist/ssr";
 import { REPORTS } from "@/lib/mock/reports";
@@ -14,7 +14,6 @@ import { KpiCard, KpiGrid } from "@/components/kpi-card";
 import { Panel, PanelHeader } from "@/components/section";
 import { ReportRow } from "@/components/report-row";
 import { ReportFilters } from "@/components/report-filters";
-import { formatDuration } from "@/lib/utils";
 
 export default async function ReportsPage({
   searchParams,
@@ -63,11 +62,11 @@ export default async function ReportsPage({
           index={2}
         />
         <KpiCard
-          label="Avg repair time"
-          value={formatDuration(kpis.avgRepairMins)}
-          hint={`${kpis.totalManHours}h logged`}
-          icon={Clock}
-          accent="#5b6ee0"
+          label="Rejected"
+          value={kpis.rejected}
+          hint="sent back"
+          icon={XCircle}
+          accent="#e05a6b"
           index={3}
         />
       </KpiGrid>

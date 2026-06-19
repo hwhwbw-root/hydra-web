@@ -7,6 +7,7 @@ import {
   ArrowRight,
   ClipboardText,
   CircleNotch,
+  CheckCircle,
   Timer,
 } from "@phosphor-icons/react/dist/ssr";
 import { computeKpis } from "@/lib/mock";
@@ -19,7 +20,7 @@ import { Panel, PanelHeader } from "@/components/section";
 import { ActivityFeed } from "@/components/activity-feed";
 import { WorkerRow } from "@/components/worker-row";
 import { DamageChip, ReportStatusBadge } from "@/components/report-badges";
-import { initials, formatDuration } from "@/lib/utils";
+import { initials } from "@/lib/utils";
 
 export default async function OverviewPage({
   searchParams,
@@ -195,11 +196,11 @@ export default async function OverviewPage({
           index={2}
         />
         <KpiCard
-          label="Avg repair time"
-          value={formatDuration(rk.avgRepairMins)}
-          hint="per report"
-          icon={FileDashed}
-          accent="#9d5bd2"
+          label="Approved"
+          value={rk.approved}
+          hint="this week"
+          icon={CheckCircle}
+          accent="#16a37a"
           index={3}
         />
       </KpiGrid>
